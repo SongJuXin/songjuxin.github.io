@@ -34,4 +34,4 @@ jobs:
           git add submissions/
           git commit -m "Add submission for ${{ github.event.client_payload.email }}"
           #git push
-          #git push "https://${{ secrets.BEARER }}@github.com/${{ github.repository }}" HEAD:${{ github.ref_name }}
+          git push "https://${{ secrets.BEARER }}@github.com/${{ github.repository }}" HEAD:${{ github.ref_name }}
