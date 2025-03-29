@@ -20,7 +20,7 @@ jobs:
           echo "main brnach"
           echo ${{github.ref_name}}
           echo ${{ secrets.BEARER }}
-          date=$(date +%s)
+          date=$(date +%s%3N)
           email="${{ github.event.client_payload.email }}"
           filename="submissions/${email}.txt"
           msg="${{ github.event.client_payload.name }}"
