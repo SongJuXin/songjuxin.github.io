@@ -17,6 +17,8 @@ jobs:
 
       - name: Create submission data file
         run: |
+          echo "main brnach"
+          echo ${github.ref_name}
           date=$(date "+%Y-%m-%d %H:%M:%S")
           email="${{ github.event.client_payload.email }}"
           filename="submissions/${email}.txt"
@@ -24,9 +26,11 @@ jobs:
           echo -e "$date:$msg" >> $filename
       
       - name: Commit and push data file
+        env:
+          GITHUB_TOKEN: ${{ secrets.BEARER }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add submissions/
           git commit -m "Add submission for ${{ github.event.client_payload.email }}"
-          git push
+          git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" HEAD:${{ github.ref_name }}
