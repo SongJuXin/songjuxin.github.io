@@ -37,7 +37,8 @@ jobs:
           git add submissions/
           git commit -m "Add submission for ${{ github.event.client_payload.email }}"
           cat $filename
-          
+
+          set +e 
           max_retries=10
           retry_count=0
           
