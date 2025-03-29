@@ -23,8 +23,9 @@
             const response = await fetch('https://api.github.com/repos/SongJuXin/songjuxin.github.io/dispatches', {
                 method: 'POST',
                 headers: {
+                    'Accept': 'application/vnd.github.v3+json',
                     'Content-Type': 'application/json',
-                    'Authorization': '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'
+                    'Authorization': 'Bearer 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'
                 },
                 body: JSON.stringify({
                       "event_type": "form_submission",
