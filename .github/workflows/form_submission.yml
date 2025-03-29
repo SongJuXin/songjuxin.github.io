@@ -24,6 +24,8 @@ jobs:
           echo -e "$date:$msg" >> $filename
       
       - name: Commit and push data file
+        env:
+          GITHUB_TOKEN: ${{ secrets.BEARER }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
