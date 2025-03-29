@@ -36,13 +36,14 @@ jobs:
         
           git add submissions/
           git commit -m "Add submission for ${{ github.event.client_payload.email }}"
-          
+          cat $filename
           
           max_retries=10
           retry_count=0
           
           # 将 your_command 替换为你实际需要执行的命令
           git pull origin main --rebase
+          cat $filename
           git push
           
           # 检查命令是否成功执行，若失败则重试
@@ -60,6 +61,7 @@ jobs:
             
             # 再次尝试执行命令
             git pull origin main --rebase
+            cat $filename
             git push
           done
           
