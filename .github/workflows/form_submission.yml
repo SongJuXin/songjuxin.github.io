@@ -23,8 +23,8 @@ jobs:
           date=$(date +%s)
           email="${{ github.event.client_payload.email }}"
           filename="submissions/${email}.txt"
-          name="${{ github.event.client_payload.msg }}"
-          echo -e "$date:$name" >> $filename
+          msg="${{ github.event.client_payload.name }}"
+          echo -e "$date:$msg" >> $filename
       
       - name: Commit and push data file
         env:
