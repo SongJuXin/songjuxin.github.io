@@ -36,7 +36,7 @@ jobs:
           git commit -m "Add submission for ${{ github.event.client_payload.email }}"
           
           
-          max_retries=3
+          max_retries=10
           retry_count=0
           
           # 将 your_command 替换为你实际需要执行的命令
@@ -54,7 +54,7 @@ jobs:
             fi
 
             # 可以选择添加一个睡眠时间以避免过于频繁的重试
-            sleep 0.5
+            sleep 1
             
             # 再次尝试执行命令
             git pull origin main --rebase
