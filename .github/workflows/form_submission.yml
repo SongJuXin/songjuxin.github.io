@@ -54,7 +54,7 @@ jobs:
             fi
 
             # 可以选择添加一个睡眠时间以避免过于频繁的重试
-            sleep 0.1
+            sleep 0.5
             
             # 再次尝试执行命令
             git pull origin main --rebase
