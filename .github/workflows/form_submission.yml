@@ -52,7 +52,9 @@ jobs:
               echo "已经达到最大重试次数，退出程序"
               exit 1
             fi
-          
+
+            # 可以选择添加一个睡眠时间以避免过于频繁的重试
+            sleep 0.1
             
             # 再次尝试执行命令
             git pull origin main --rebase
