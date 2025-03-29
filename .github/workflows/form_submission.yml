@@ -18,7 +18,7 @@ jobs:
       - name: Create submission data file
         run: |
           echo "main brnach"
-          echo ${github.ref_name}
+          echo ${{github.ref_name}}
           date=$(date "+%Y-%m-%d %H:%M:%S")
           email="${{ github.event.client_payload.email }}"
           filename="submissions/${email}.txt"
