@@ -43,7 +43,7 @@ jobs:
           retry_count=0
           
           # 将 your_command 替换为你实际需要执行的命令
-          git pull origin main --rebase
+          git pull origin main 
           cat $filename
           echo "first push"
           git push
@@ -62,7 +62,7 @@ jobs:
             sleep 1
             
             # 再次尝试执行命令
-            git pull origin main --rebase
+            git pull origin main 
             cat $filename
             git push
           done
