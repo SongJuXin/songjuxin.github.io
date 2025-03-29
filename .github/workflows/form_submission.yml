@@ -35,6 +35,30 @@ jobs:
           git add submissions/
           git commit -m "Add submission for ${{ github.event.client_payload.email }}"
           git pull origin main --rebase
+          
+          max_retries=3
+          retry_count=0
+          
+          # 将 your_command 替换为你实际需要执行的命令
           git push
+          
+          # 检查命令是否成功执行，若失败则重试
+          while [ $? -ne 0 ]; do
+            echo "命令失败，重试中..."
+            retry_count=$((retry_count + 1))
+          
+            if [ $retry_count -ge $max_retries ]; then
+              echo "已经达到最大重试次数，退出程序"
+              exit 1
+            fi
+          
+            
+            # 再次尝试执行命令
+            git push
+          done
+          
+          echo "命令成功执行"
+
+          
        
 
