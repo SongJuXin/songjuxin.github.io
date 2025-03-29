@@ -47,7 +47,6 @@ jobs:
           cat $filename
           echo "first push"
           git push
-          echo $? 
           
           # 检查命令是否成功执行，若失败则重试
           while [ $? -ne 0 ]; do
