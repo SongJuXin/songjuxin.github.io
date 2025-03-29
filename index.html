@@ -29,7 +29,8 @@
                 body: JSON.stringify({
                       "event_type": "form_submission",
                       "client_payload": formData
-            });
+                });
+            })
             if (response.ok) {
                 alert('Form submitted successfully');
             } else {
