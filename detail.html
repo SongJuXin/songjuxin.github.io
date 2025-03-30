@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+  const search = new URLSearchParams(window.location.search)
+  const filename = search.get('filename')
+  fetch(`https://songjuxin.github.io/submissions/${filename}`).then(res=>res.text()).then(res=>document.write(res))
+</script>
