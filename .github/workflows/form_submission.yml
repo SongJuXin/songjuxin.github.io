@@ -36,13 +36,11 @@ jobs:
           echo $msg
           echo 'filename'
           echo $filename
-          pwd
-          ls
 
       - name: Execute script
         env:
           GITHUB_TOKEN: ${{ secrets.BEARER }}
-        run: chmod +x ./commit.sh && ./commit.sh "Your commit message" "your_file_name.txt"
+        run: chmod +x ./commit.sh && ./commit.sh $msg $filename
 
           
        
