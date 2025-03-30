@@ -18,6 +18,7 @@ jobs:
       - name: Create submission data file
         run: |
           curtime=$(date +%s%3N)
+          echo $curtime
           email="${{ github.event.client_payload.email }}"
           filename=$email
           msg="${{curtime}}:${{ github.event.client_payload.name }}"
