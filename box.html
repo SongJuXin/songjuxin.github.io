@@ -85,7 +85,7 @@
     document.getElementById('overlay').style.display = 'none';
     timer = setInterval(() => {
       timeElapsed++;
-      document.getElementById('timer').innerText = `时间: <span id="time">${timeElapsed}</span>秒`;
+      document.getElementById('timer').innerHTML = `时间: <span id="time">${timeElapsed}</span>秒`;
     }, 1000);
   }
 
