@@ -40,6 +40,7 @@
     e.preventDefault();
     const email=document.getElementById('email').value
     window.localStorage.setItem('email',email)
+    alert('保存成功')
   })
   document.querySelector('#email').value=window.localStorage.getItem('email')
 
