@@ -6,7 +6,7 @@ add_string_if_not_exists() {
     local search_string="$2"
 
     # 检查文件中是否包含目标字符串
-    if ! grep -Fxq "$search_string" "$file"; then
+    if ! grep -q "^${search_string}:" "$file"; then
         # 如果文件不包含该行字符串，则将其插入到文件中
         echo "$search_string" >> "$file"
         echo "String added to file."
