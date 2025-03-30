@@ -12,9 +12,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Prepare directory
-        run: mkdir -p submissions
-
       - name: Create submission data file
         run: |
           curtime=$(date +%s%3N)
