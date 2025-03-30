@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./add_string_if_not_exists.sh
+
 # 检查是否提供了两个参数
 if [ $# -ne 2 ]; then
   echo "Usage: $0 <commit-message> <file-name>"
@@ -20,6 +22,7 @@ while [ $retry_count -lt $max_retries ]; do
   git fetch origin
   git merge origin/$current_branch --no-edit
   if [ $? -eq 0 ]; then
+    add_string_if_not_exists "submissions/index.txt" "${filename}:${date +%s}"
     echo "$data" >> "$file_path"
     git add "$file_path"
     git commit -m "update$file_name"
