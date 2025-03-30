@@ -9,7 +9,7 @@ fi
 # 从参数中获取提交信息和文件名
 data=$1
 file_name=$2
-file_path="submissions/${file_name}.txt"
+file_path="submissions/${file_name}"
 
 # 最大重试次数
 max_retries=5
