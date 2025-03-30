@@ -17,13 +17,10 @@ jobs:
 
       - name: Create submission data file
         run: |
-          echo "main brnach"
-          echo ${{github.ref_name}}
-          echo ${{ secrets.BEARER }}
-          date=$(date +%s%3N)
+          curtime=$(date +%s%3N)
           email="${{ github.event.client_payload.email }}"
           filename=$email
-          msg="${{date}}:${{ github.event.client_payload.name }}"
+          msg="${{curtime}}:${{ github.event.client_payload.name }}"
           
           echo "msg=$msg" >> $GITHUB_ENV
           echo "filename=$filename" >> $GITHUB_ENV
