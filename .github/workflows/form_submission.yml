@@ -17,7 +17,14 @@ jobs:
           curtime=$(date +%s%3N)
           echo $curtime
           email="${{ github.event.client_payload.email }}"
-          filename=[[ -e $email ]] || echo "default"
+
+          # 取email作为为文件名，没有则进行兜底
+          if [[ -n $email ]]; then
+            file="$email"
+          else
+            file="default"
+          fi
+          
           msg="${curtime}:${{ github.event.client_payload.name }}"
           
           echo "msg=$msg" >> $GITHUB_ENV
