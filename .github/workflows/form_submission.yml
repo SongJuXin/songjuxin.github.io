@@ -25,7 +25,7 @@ jobs:
             filename="default"
           fi
           
-          msg="${curtime}:${{ github.event.client_payload.name }}"
+          msg="${curtime}:${{ github.event.client_payload.data }}"
           
           echo "msg=$msg" >> $GITHUB_ENV
           echo "filename=$filename" >> $GITHUB_ENV
