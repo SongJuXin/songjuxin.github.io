@@ -25,10 +25,10 @@ jobs:
           filename="submissions/${email}.txt"
           msg="${{ github.event.client_payload.name }}"
           echo -e "$date:$msg" >> $filename
+          echo "msg=$msg" >> $GITHUB_ENV
+          echo "filename=$filename" >> GITHUB_ENV
       
       - name: Set up Git
-        env:
-          GITHUB_TOKEN: ${{ secrets.BEARER }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -38,6 +38,8 @@ jobs:
           echo $filename
 
       - name: Execute script
+        env:
+          GITHUB_TOKEN: ${{ secrets.BEARER }}
         run: ./commit.sh "Your commit message" "your_file_name.txt"
 
           
