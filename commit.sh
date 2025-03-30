@@ -25,7 +25,7 @@ while [ $retry_count -lt $max_retries ]; do
   if [ $? -eq 0 ]; then
     add_string_if_not_exists "submissions/index.txt" "${filename}:${date +%s}"
     echo "$data" >> "$file_path"
-    git add "$file_path"
+    git add submissions
     git commit -m "update$file_name"
     git push
     if [ $? -eq 0 ]; then
