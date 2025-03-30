@@ -26,7 +26,7 @@ jobs:
           msg="${{ github.event.client_payload.name }}"
           echo -e "$date:$msg" >> $filename
           echo "msg=$msg" >> $GITHUB_ENV
-          echo "filename=$filename" >> GITHUB_ENV
+          echo "filename=$filename" >> $GITHUB_ENV
       
       - name: Set up Git
         run: |
