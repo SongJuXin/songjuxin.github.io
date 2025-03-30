@@ -37,6 +37,7 @@ jobs:
           echo 'filename'
           echo $filename
           pwd
+          ls
 
       - name: Execute script
         env:
