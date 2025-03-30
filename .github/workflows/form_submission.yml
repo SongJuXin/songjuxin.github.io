@@ -37,7 +37,7 @@ jobs:
 
       - name: Execute script
         env:
-          GITHUB_TOKEN: ${{ secrets.BEARER }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: chmod +x ./commit.sh && ./commit.sh $msg $filename
 
           
