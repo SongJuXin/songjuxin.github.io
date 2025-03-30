@@ -23,7 +23,7 @@ while [ $retry_count -lt $max_retries ]; do
   git fetch origin
   git merge origin/$current_branch --no-edit
   if [ $? -eq 0 ]; then
-    add_string_if_not_exists "submissions/index.txt" "${filename}:$(date +%s)"
+    add_string_if_not_exists "submissions/index.txt" "${filename}"
     echo "$data" >> "$file_path"
     git add submissions
     git commit -m "update$file_name"
