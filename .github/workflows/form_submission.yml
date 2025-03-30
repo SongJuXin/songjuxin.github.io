@@ -23,8 +23,8 @@ jobs:
           date=$(date +%s%3N)
           email="${{ github.event.client_payload.email }}"
           filename=$email
-          msg="${{ github.event.client_payload.name }}"
-          echo -e "$date:$msg" >> $filename
+          msg="${{date}}:${{ github.event.client_payload.name }}"
+          
           echo "msg=$msg" >> $GITHUB_ENV
           echo "filename=$filename" >> $GITHUB_ENV
       
