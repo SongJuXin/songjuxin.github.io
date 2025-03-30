@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>舒尔特方格</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      backdrop-filter: blur(4px);
+      background-color: rgba(255, 255, 255, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    #grid-container {
+      width: 270px;
+      height: 270px;
+      display: grid;
+      grid-template-columns: repeat(5, 50px);
+      grid-template-rows: repeat(5, 50px);
+      gap: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="">
+  <div id="timer" class="mb-4 text-xl text-center">时间: <span id="time">0</span>秒</div>
+  <div id="grid-container" class="relative mx-auto">
+    <div id="overlay">
+      <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" onclick="startGame()">开始</button>
+    </div>
+    <!-- Dynamically generated grid cells -->
+    <script>
+      const numbers = Array.from({length: 25}, (_, i) => i + 1).sort(() => Math.random() - 0.5);
+      const correctSequence = numbers.slice().sort((a, b) => a - b);
+      numbers.forEach(num => {
+        document.write(`<div class="flex justify-center items-center bg-gray-200 text-xl font-bold h-12 w-12" data-num="${num}" onclick="checkNumber(${num}, this)">${num}</div>`);
+      });
+    </script>
+  </div>
+</div>
+<section class="mt-12">
+  <div class="p-6 rounded-lg bg-zinc-50"><h3 class="text-xl font-semibold mb-3">🎯 游戏玩法</h3>
+    <div class="space-y-3 text-lg text-muted-foreground"><p>
+      尽快按升序（1-25）找出并点击数字。尝试使用周边视觉而不是逐个扫描每个数字！</p>
+      <div class="mt-4 p-4 bg-muted/50 rounded-lg"><h4 class="font-medium mb-2">速度标准</h4>
+        <p class="text-sm text-muted-foreground mb-2">以下是5x5（1-25）舒尔特表格测试的参考标准：</p>
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="space-y-1"><p class="text-sm font-medium">儿童（6岁）：</p>
+            <ul class="text-sm space-y-1 list-disc pl-5">
+              <li>优秀：60秒或更少</li>
+              <li>良好：最多70秒</li>
+              <li>一般：最多80秒</li>
+            </ul>
+          </div>
+          <div class="space-y-1"><p class="text-sm font-medium">成人：</p>
+            <ul class="text-sm space-y-1 list-disc pl-5">
+              <li>初学者水平：40-60秒</li>
+              <li>一般水平：25-40秒</li>
+              <li>高级水平：15-25秒</li>
+              <li>精英表现：低于15秒</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let timer = null;
+  let timeElapsed = 0;
+  let currentIndex = 0;
+
+  function startGame() {
+    document.getElementById('overlay').style.display = 'none';
+    timer = setInterval(() => {
+      timeElapsed++;
+      document.getElementById('timer').innerText = `时间: <span id="time">${timeElapsed}</span>秒`;
+    }, 1000);
+  }
+
+  function checkNumber(num, element) {
+    if (num === correctSequence[currentIndex]) {
+      element.classList.remove('bg-gray-200');
+      element.classList.add('bg-green-500');
+      setTimeout(() => {
+        element.classList.remove('bg-green-500');
+        element.classList.add('bg-gray-200');
+      }, 500);
+      currentIndex++;
+
+      if (currentIndex === correctSequence.length) {
+        clearInterval(timer);
+        alert(`完成！总时间: ${timeElapsed}秒`);
+        window.parent.$submit.style.display = 'block';
+      }
+    } else {
+      element.classList.remove('bg-gray-200');
+      element.classList.add('bg-red-500');
+      setTimeout(() => {
+        element.classList.remove('bg-red-500');
+        element.classList.add('bg-gray-200');
+      }, 500);
+    }
+  }
+</script>
+
+</body>
+</html>
