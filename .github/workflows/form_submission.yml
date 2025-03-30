@@ -20,7 +20,7 @@ jobs:
           curtime=$(date +%s%3N)
           echo $curtime
           email="${{ github.event.client_payload.email }}"
-          filename=$email
+          filename=[[ -e $email ]] || echo "default"
           msg="${curtime}:${{ github.event.client_payload.name }}"
           
           echo "msg=$msg" >> $GITHUB_ENV
