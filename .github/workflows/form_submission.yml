@@ -20,9 +20,9 @@ jobs:
 
           # 取email作为为文件名，没有则进行兜底
           if [[ -n $email ]]; then
-            file="$email"
+            filename="$email"
           else
-            file="default"
+            filename="default"
           fi
           
           msg="${curtime}:${{ github.event.client_payload.name }}"
