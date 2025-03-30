@@ -37,6 +37,7 @@
       })
     })
     if (response.ok) {
+      window.parent.$submit.style.display = 'none';
       alert('Form submitted successfully!There is a delay in data updates');
     } else {
       alert('Error submitting form');
