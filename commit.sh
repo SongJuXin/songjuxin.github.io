@@ -5,6 +5,7 @@ source ./add_string_if_not_exists.sh
 # 检查是否提供了两个参数
 if [ $# -ne 2 ]; then
   echo "Usage: $0 <commit-message> <file-name>"
+  echo "commit-message is ($1),file-name is ($2)"
   exit 1
 fi
 
