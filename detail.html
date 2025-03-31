@@ -5,10 +5,12 @@
   <title>Title</title>
 </head>
 <body>
+<a href="#" onclick="javascript:history.back()">&lt; back</a>
+<section id="detail"></section>
 </body>
 </html>
 <script>
   const search = new URLSearchParams(window.location.search)
   const filename = search.get('filename')
-  fetch(`https://songjuxin.github.io/submissions/${filename}`).then(res=>res.text()).then(res=>document.write(res))
+  fetch(`https://songjuxin.github.io/submissions/${filename}`).then(res=>res.text()).then(res=>document.querySelector('#detail').innerHTML=res)
 </script>
