@@ -84,9 +84,9 @@
   function startGame() {
     document.getElementById('overlay').style.display = 'none';
     timer = setInterval(() => {
-      timeElapsed++;
-      document.getElementById('timer').innerHTML = `时间: <span id="time">${timeElapsed}</span>秒`;
-    }, 1000);
+      timeElapsed=timeElapsed+0.1;
+      document.getElementById('timer').innerHTML = `时间: <span id="time">${timeElapsed.toFixed(2)}</span>秒`;
+    }, 100);
   }
 
   function checkNumber(num, element) {
@@ -96,7 +96,7 @@
       setTimeout(() => {
         element.classList.remove('bg-green-500');
         element.classList.add('bg-gray-200');
-      }, 500);
+      }, 100);
       currentIndex++;
 
       if (currentIndex === correctSequence.length) {
@@ -110,7 +110,7 @@
       setTimeout(() => {
         element.classList.remove('bg-red-500');
         element.classList.add('bg-gray-200');
-      }, 500);
+      }, 100);
     }
   }
 </script>
