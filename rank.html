@@ -10,7 +10,7 @@
   fetch('/submissions/index.txt').then(response => response.text())
     .then(data => {
       const lines = data.split('\n');
-      const name=${line.split(':')[0]}
+      const name=line.split(':')[0]
       const html=lines.map(line => `<a href=${name}>${name}</p>`).join('');
       document.getElementById('ranklist').innerHTML=html;
     });
