@@ -7,11 +7,13 @@
 <body>
 <div id="ranklist"></div>
 <script>
-  fetch('/submissions/index.txt').then(response => response.text())
+  fetch('https://songjuxin.github.io/submissions/index.txt').then(response => response.text())
     .then(data => {
       const lines = data.split('\n');
-      const name=line.split(':')[0]
-      const html=lines.map(line => `<a href=${name}>${name}</p>`).join('');
+      const html=lines.map(line => {
+        const name=line.split(':')[0]
+        return `<p><a href=/detail.html?filename=${name}>${name}</a></p>`
+      }).join('');
       document.getElementById('ranklist').innerHTML=html;
     });
 </script>
