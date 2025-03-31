@@ -15,7 +15,7 @@
   fetch(`https://songjuxin.github.io/submissions/${filename}`).then(res=>res.text()).then(res=>{
     const html=res.split('\n').filter(Boolean).map(item=>{
       const [dateTimeStamp,costTime]=item.split(':')
-      return `<p>${new Date(Number(dateTimeStamp)).toLocaleString()} ${costTime}</p>`
+      return `<p>${new Date(Number(dateTimeStamp)).toLocaleString()} ${costTime}s</p>`
     }).join('')
     document.querySelector('#detail').innerHTML=html
   })
