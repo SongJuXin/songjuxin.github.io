@@ -15,8 +15,10 @@
 <script>
   const search = new URLSearchParams(window.location.search)
   const Bearer = search.get('Bearer')
+  const reloadBox=window.parent.$box.querySelector('iframe').contentWindow.location.reload
   document.getElementById('close').addEventListener('click', function () {
     window.parent.$submit.style.display = 'none';
+    reloadBox()
   });
   document.getElementById('submit').addEventListener('click', async function (e) {
     e.preventDefault();
@@ -42,6 +44,7 @@
     } else {
       alert('Error submitting form');
     }
+    reloadBox()
   });
 </script>
 </html>
